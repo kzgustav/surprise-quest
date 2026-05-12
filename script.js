@@ -27,8 +27,8 @@ function showStage(num) {
 function spawnConfetti() {
   const wrap = document.getElementById('confetti-wrap');
   wrap.innerHTML = '';
-  const colors = ['#ff7a5c', '#ffd23f', '#6bcfa8', '#ff8fab', '#a78bfa', '#ffffff'];
-  const count = 60;
+  const colors = ['#d97757', '#8b9d83', '#c4a98a', '#4a5240', '#f5d9cb', '#2a2820'];
+  const count = 55;
 
   for (let i = 0; i < count; i++) {
     const piece = document.createElement('div');
@@ -93,8 +93,8 @@ function spawnConfettiInBody() {
   wrap.id = 'final-confetti';
   document.body.appendChild(wrap);
 
-  const colors = ['#ff7a5c', '#ffd23f', '#6bcfa8', '#ff8fab', '#a78bfa'];
-  for (let i = 0; i < 80; i++) {
+  const colors = ['#d97757', '#8b9d83', '#c4a98a', '#4a5240', '#f5d9cb'];
+  for (let i = 0; i < 70; i++) {
     const piece = document.createElement('div');
     piece.className = 'confetti-piece';
     piece.style.left = Math.random() * 100 + '%';
