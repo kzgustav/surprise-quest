@@ -1,6 +1,5 @@
 /* ============================================
-   The Hunt — Surprise Quest
-   ダーク基調・ロウソクの灯りの雰囲気
+   The Hunt — Birthday Pop Edition 🎁
    ============================================ */
 
 * {
@@ -10,53 +9,49 @@
 }
 
 :root {
-  --bg: #0b0b13;
-  --bg-deep: #060609;
-  --ink: #e8e0cd;
-  --ink-soft: #9a917d;
-  --gold: #d4af7a;
-  --gold-glow: rgba(212, 175, 122, 0.4);
-  --rose: #c97a6e;
-  --line: rgba(212, 175, 122, 0.25);
+  /* ポップな誕生日カラー */
+  --bg: #fff5e8;
+  --bg-card: #ffffff;
+  --coral: #ff7a5c;
+  --coral-dark: #ff5a3c;
+  --yellow: #ffd23f;
+  --mint: #6bcfa8;
+  --pink: #ff8fab;
+  --purple: #a78bfa;
+  --ink: #2d2438;
+  --ink-soft: #7a6e8c;
+  --line: #ffe4c7;
+  --shadow: rgba(255, 122, 92, 0.18);
+  --shadow-lg: rgba(255, 122, 92, 0.28);
 
-  --font-serif: 'Cormorant Garamond', 'Noto Serif JP', serif;
-  --font-jp: 'Noto Serif JP', serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Fredoka', 'M PLUS Rounded 1c', sans-serif;
+  --font-jp: 'M PLUS Rounded 1c', sans-serif;
 }
 
 html, body {
   min-height: 100vh;
-  background: var(--bg-deep);
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 211, 145, 0.5), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(255, 143, 171, 0.25), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 0% 50%, rgba(167, 139, 250, 0.15), transparent 70%);
   color: var(--ink);
   font-family: var(--font-jp);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.8;
   letter-spacing: 0.02em;
   overflow-x: hidden;
 }
 
-/* 背景のほのかな光 */
-.bg-glow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 60% 50% at 50% 20%, rgba(212, 175, 122, 0.08), transparent 70%),
-    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(201, 122, 110, 0.05), transparent 70%),
-    var(--bg);
-  z-index: 0;
-}
-
 main {
   position: relative;
-  z-index: 1;
-  max-width: 640px;
+  max-width: 560px;
   margin: 0 auto;
-  padding: 5rem 1.5rem 4rem;
+  padding: 3rem 1.25rem 2rem;
 }
 
 /* ============================================
-   共通：イントロ・ステージ・フィナーレの枠組み
+   セクション共通
    ============================================ */
 
 .intro,
@@ -67,144 +62,202 @@ main {
   flex-direction: column;
   justify-content: center;
   padding: 2rem 0;
-  animation: fadeIn 0.9s ease-out;
+  animation: bounceIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes fadeIn {
-  from {
+@keyframes bounceIn {
+  0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(40px) scale(0.95);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  opacity: 0.8;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--coral);
+  margin-bottom: 1.2rem;
+  text-align: center;
 }
 
 /* ============================================
    イントロ
    ============================================ */
 
+.intro {
+  text-align: center;
+  align-items: center;
+}
+
 .intro h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(3rem, 12vw, 5.5rem);
-  font-weight: 500;
-  font-style: italic;
-  letter-spacing: 0.02em;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 14vw, 5.5rem);
+  font-weight: 700;
   line-height: 1;
   color: var(--ink);
-  margin-bottom: 2rem;
-  text-shadow: 0 0 30px var(--gold-glow);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--coral) 0%, var(--pink) 50%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: wiggle 4s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-1.5deg); }
+  75% { transform: rotate(1.5deg); }
 }
 
 .intro .lead {
   font-size: 1rem;
   line-height: 2;
   color: var(--ink-soft);
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
+/* メインボタン */
 .primary-btn {
-  align-self: flex-start;
-  background: transparent;
-  color: var(--gold);
-  border: 1px solid var(--gold);
-  padding: 0.9rem 2.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  background: var(--coral);
+  color: white;
+  border: none;
+  padding: 1.1rem 2.8rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  border-radius: 999px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  box-shadow: 0 8px 0 var(--coral-dark), 0 12px 24px var(--shadow-lg);
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .primary-btn:hover {
-  background: var(--gold);
-  color: var(--bg-deep);
-  box-shadow: 0 0 30px var(--gold-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 var(--coral-dark), 0 14px 28px var(--shadow-lg);
 }
 
 .primary-btn:active {
-  transform: translateY(1px);
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 var(--coral-dark), 0 4px 12px var(--shadow);
+}
+
+.primary-btn .arrow {
+  font-size: 1.2rem;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: rotate(0) scale(1); }
+  50% { transform: rotate(15deg) scale(1.15); }
 }
 
 /* ============================================
    ステージ
    ============================================ */
 
-.stage-num {
-  font-family: var(--font-mono);
+.stage-badge {
+  font-family: var(--font-display);
   font-size: 0.85rem;
-  letter-spacing: 0.3em;
-  color: var(--gold);
-  margin-bottom: 2.5rem;
-  position: relative;
-  padding-left: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: white;
+  background: var(--coral);
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  align-self: flex-start;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
-.stage-num::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 1.5rem;
-  height: 1px;
-  background: var(--gold);
-  opacity: 0.6;
+.stage-badge span {
+  font-size: 1rem;
+  margin-left: 0.2rem;
+}
+
+.stage[data-stage="2"] .stage-badge {
+  background: var(--mint);
+  box-shadow: 0 4px 12px rgba(107, 207, 168, 0.3);
+}
+
+.stage[data-stage="3"] .stage-badge {
+  background: var(--purple);
+  box-shadow: 0 4px 12px rgba(167, 139, 250, 0.3);
+}
+
+/* なぞなぞカード */
+.riddle-card {
+  background: var(--bg-card);
+  border-radius: 28px;
+  padding: 2.2rem 1.8rem;
+  box-shadow:
+    0 8px 0 var(--line),
+    0 20px 40px rgba(255, 122, 92, 0.12);
+  border: 2px solid var(--line);
 }
 
 .riddle {
-  font-family: var(--font-jp);
   font-size: 1.05rem;
-  line-height: 2.2;
+  line-height: 2.1;
   color: var(--ink);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .riddle p {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .riddle .q {
-  margin-top: 1.5rem;
-  color: var(--ink-soft);
-  font-style: italic;
+  margin-top: 1.2rem;
+  color: var(--coral);
+  font-weight: 700;
 }
 
 .riddle .ele {
   display: inline-block;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 500;
-  color: var(--gold);
-  font-size: 1.3em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: white;
+  background: var(--yellow);
+  font-size: 1.1em;
+  width: 1.8em;
+  height: 1.8em;
+  line-height: 1.8em;
+  text-align: center;
+  border-radius: 50%;
   margin: 0 0.15em;
-  text-shadow: 0 0 12px var(--gold-glow);
+  box-shadow: 0 4px 0 #e6b835, 0 6px 12px rgba(255, 210, 63, 0.4);
+  transform: translateY(-2px);
 }
+
+.stage[data-stage="1"] .ele:nth-of-type(2) { background: var(--coral); box-shadow: 0 4px 0 var(--coral-dark), 0 6px 12px var(--shadow); }
+.stage[data-stage="1"] .ele:nth-of-type(3) { background: var(--mint); box-shadow: 0 4px 0 #4eb38c, 0 6px 12px rgba(107, 207, 168, 0.4); }
 
 /* 入力フォーム */
 .answer-form {
   display: flex;
   gap: 0.5rem;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 0.5rem;
-  transition: border-color 0.3s ease;
+  background: var(--bg);
+  border-radius: 16px;
+  padding: 0.4rem 0.5rem 0.4rem 1rem;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
 }
 
 .answer-form:focus-within {
-  border-color: var(--gold);
+  border-color: var(--coral);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(255, 122, 92, 0.15);
 }
 
 .answer-form input {
@@ -213,45 +266,52 @@ main {
   border: none;
   color: var(--ink);
   font-family: var(--font-jp);
+  font-weight: 500;
   font-size: 1rem;
-  padding: 0.5rem 0;
+  padding: 0.7rem 0;
   outline: none;
-  letter-spacing: 0.05em;
 }
 
 .answer-form input::placeholder {
   color: var(--ink-soft);
-  opacity: 0.5;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
+  opacity: 0.6;
 }
 
 .answer-form button {
-  background: transparent;
+  background: var(--coral);
   border: none;
-  color: var(--gold);
-  font-family: var(--font-mono);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 700;
   font-size: 1.2rem;
   cursor: pointer;
-  padding: 0.5rem 0.8rem;
-  transition: all 0.2s ease;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  transition: all 0.15s ease;
+  box-shadow: 0 3px 0 var(--coral-dark);
 }
 
 .answer-form button:hover {
-  transform: translateX(3px);
-  text-shadow: 0 0 10px var(--gold-glow);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 var(--coral-dark);
+}
+
+.answer-form button:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--coral-dark);
 }
 
 /* フィードバック */
 .feedback {
   margin-top: 1rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
   min-height: 1.5rem;
   opacity: 0;
   transition: opacity 0.3s ease;
+  text-align: center;
 }
 
 .feedback.visible {
@@ -259,35 +319,203 @@ main {
 }
 
 .feedback.error {
-  color: var(--rose);
+  color: var(--coral);
 }
 
-.feedback.success {
-  color: var(--gold);
-}
-
-/* 揺れアニメ（不正解時） */
+/* 揺れアニメ */
 .shake {
   animation: shake 0.4s ease;
 }
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-6px); }
-  40% { transform: translateX(6px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
 }
 
-/* 解いた後のステージ（フェードアウト風） */
-.stage.cleared {
-  animation: dim 0.8s ease forwards;
+/* ============================================
+   正解オーバーレイ
+   ============================================ */
+
+.correct-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(255, 245, 232, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: overlayIn 0.3s ease;
 }
 
-@keyframes dim {
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.correct-card {
+  position: relative;
+  z-index: 2;
+  background: white;
+  border-radius: 32px;
+  padding: 2.5rem 2rem 2rem;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow:
+    0 10px 0 var(--line),
+    0 30px 60px rgba(255, 122, 92, 0.25);
+  border: 3px solid var(--coral);
+  animation: cardPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes cardPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* 正解スタンプ */
+.correct-stamp {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 14vw, 5rem);
+  font-weight: 700;
+  color: var(--coral);
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+  animation: stampIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+  text-shadow:
+    4px 4px 0 var(--yellow),
+    -2px -2px 0 var(--pink);
+}
+
+.correct-stamp span {
+  display: inline-block;
+  animation: bounce 1.2s ease-in-out infinite 0.7s;
+}
+
+@keyframes stampIn {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-20deg);
+  }
+  60% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-3deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hint-block {
+  background: linear-gradient(135deg, #fff8e8 0%, #fff0d8 100%);
+  border-radius: 20px;
+  padding: 1.3rem 1.2rem;
+  margin-bottom: 1.5rem;
+  border: 2px dashed var(--yellow);
+  animation: fadeUp 0.5s ease 0.5s both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
   to {
-    opacity: 0.25;
-    filter: blur(1px);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hint-lead {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.hint-place {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+.hint-place #hint-place {
+  color: var(--coral);
+  font-size: 1.1em;
+}
+
+/* 次へボタン */
+.next-btn {
+  background: var(--coral);
+  color: white;
+  border: none;
+  padding: 1rem 2.2rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 var(--coral-dark), 0 10px 20px var(--shadow);
+  transition: all 0.15s ease;
+  animation: fadeUp 0.5s ease 0.7s both;
+}
+
+.next-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 var(--coral-dark), 0 12px 24px var(--shadow-lg);
+}
+
+.next-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--coral-dark), 0 4px 8px var(--shadow);
+}
+
+/* 紙吹雪 */
+.confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 14px;
+  opacity: 0;
+  animation: confettiFall 3.5s ease-out forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translateY(-20px) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(110vh) rotate(720deg);
   }
 }
 
@@ -295,79 +523,107 @@ main {
    フィナーレ
    ============================================ */
 
+.final {
+  text-align: center;
+}
+
+.final-card {
+  background: white;
+  border-radius: 32px;
+  padding: 2.5rem 1.8rem;
+  box-shadow:
+    0 10px 0 var(--line),
+    0 25px 50px rgba(255, 122, 92, 0.15);
+  border: 3px solid var(--yellow);
+}
+
 .final h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 7vw, 3rem);
-  font-weight: 500;
-  font-style: italic;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 7vw, 2.5rem);
+  font-weight: 700;
   line-height: 1.3;
   color: var(--ink);
-  margin-bottom: 1.5rem;
-  text-shadow: 0 0 25px var(--gold-glow);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--coral), var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .final-lead {
   color: var(--ink-soft);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   line-height: 2;
+  font-size: 0.95rem;
 }
 
 .places {
   list-style: none;
-  margin-bottom: 3rem;
-  border-top: 1px solid var(--line);
+  margin-bottom: 2rem;
+  text-align: left;
 }
 
 .places li {
   display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--line);
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.7rem;
+  background: var(--bg);
+  border-radius: 16px;
   opacity: 0;
-  animation: revealLine 0.8s ease forwards;
+  animation: revealLine 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-.places li:nth-child(1) { animation-delay: 0.4s; }
-.places li:nth-child(2) { animation-delay: 0.9s; }
-.places li:nth-child(3) { animation-delay: 1.4s; }
+.places li:nth-child(1) {
+  animation-delay: 0.3s;
+  border-left: 4px solid var(--coral);
+}
+.places li:nth-child(2) {
+  animation-delay: 0.7s;
+  border-left: 4px solid var(--mint);
+}
+.places li:nth-child(3) {
+  animation-delay: 1.1s;
+  border-left: 4px solid var(--purple);
+}
 
 @keyframes revealLine {
   from {
     opacity: 0;
-    transform: translateX(-15px);
+    transform: translateX(-15px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 }
 
 .places .num {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
-  color: var(--gold);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--coral);
   flex-shrink: 0;
 }
 
+.places li:nth-child(2) .num { color: var(--mint); }
+.places li:nth-child(3) .num { color: var(--purple); }
+
 .places .place {
-  font-family: var(--font-jp);
-  font-size: 1.05rem;
+  font-weight: 500;
+  font-size: 1rem;
   color: var(--ink);
-  letter-spacing: 0.05em;
 }
 
 .end-line {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--gold);
-  text-align: center;
-  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--coral);
+  margin-top: 1.5rem;
   opacity: 0;
-  animation: fadeIn 1s ease forwards;
-  animation-delay: 2s;
+  animation: bounceIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s both;
 }
 
 /* ============================================
@@ -375,15 +631,12 @@ main {
    ============================================ */
 
 footer {
-  position: relative;
-  z-index: 1;
   text-align: center;
   padding: 2rem 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
   color: var(--ink-soft);
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 /* ============================================
@@ -392,19 +645,26 @@ footer {
 
 @media (max-width: 480px) {
   main {
-    padding: 3rem 1.25rem 3rem;
+    padding: 2rem 1rem;
+  }
+
+  .riddle-card {
+    padding: 1.8rem 1.3rem;
+    border-radius: 24px;
   }
 
   .riddle {
     font-size: 1rem;
-    line-height: 2.1;
+    line-height: 2;
   }
 
-  .stage-num {
-    padding-left: 2rem;
+  .correct-card {
+    padding: 2rem 1.3rem 1.5rem;
+    border-radius: 24px;
   }
 
-  .stage-num::before {
-    width: 1.2rem;
+  .final-card {
+    padding: 2rem 1.3rem;
+    border-radius: 24px;
   }
 }

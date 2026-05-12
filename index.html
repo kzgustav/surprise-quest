@@ -3,102 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Hunt — 3つの扉</title>
+<title>The Hunt 🎁</title>
 <meta name="description" content="3つの謎を解いて、隠された場所をたどる。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+JP:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="bg-glow"></div>
 
 <main>
 
   <!-- イントロ -->
   <section class="intro" id="intro">
-    <p class="eyebrow">— A Birthday Hunt —</p>
+    <p class="eyebrow">🎁 Birthday Hunt</p>
     <h1>The Hunt</h1>
-    <p class="lead">3つの謎が、3つの場所を指す。<br>正しい答えだけが、次の扉をひらく。</p>
-    <button class="primary-btn" data-action="start">扉をひらく</button>
+    <p class="lead">3つの謎が、3つの場所を指す。<br>正しい答えだけが、次の扉をひらく！</p>
+    <button class="primary-btn" data-action="start">スタート <span class="arrow">✨</span></button>
   </section>
 
   <!-- Stage 1 -->
-  <section class="stage" data-stage="1" hidden>
-    <p class="stage-num">Stage 01</p>
-    <div class="riddle">
-      <p>わたしは <span class="ele">C</span> と <span class="ele">O</span> と <span class="ele">H</span> で できている。</p>
-      <p>透明だけれど、グラスのなかで星が弾ける。</p>
-      <p>冷えているほど、機嫌がいい。</p>
-      <p class="q">— わたしは？</p>
+  <section class="stage" data-stage="1" data-place="炭酸水のパッケージ" hidden>
+    <div class="stage-badge">Stage <span>01</span></div>
+    <div class="riddle-card">
+      <div class="riddle">
+        <p>わたしは <span class="ele">C</span> と <span class="ele">O</span> と <span class="ele">H</span> でできている。</p>
+        <p>透明だけれど、グラスのなかで星が弾ける。</p>
+        <p>冷えているほど、機嫌がいい。</p>
+        <p class="q">— わたしは？</p>
+      </div>
+      <form class="answer-form" data-answers="炭酸水|たんさんすい|タンサンスイ|ソーダ|ソーダ水|そーだ|そーだすい">
+        <input type="text" placeholder="こたえを入力..." autocomplete="off" autocapitalize="off" spellcheck="false">
+        <button type="submit" aria-label="送信">→</button>
+      </form>
+      <p class="feedback"></p>
     </div>
-    <form class="answer-form" data-answers="炭酸水|たんさんすい|タンサンスイ|ソーダ|ソーダ水|そーだ|そーだすい">
-      <input type="text" placeholder="answer..." autocomplete="off" autocapitalize="off" spellcheck="false">
-      <button type="submit" aria-label="送信">→</button>
-    </form>
-    <p class="feedback"></p>
   </section>
 
   <!-- Stage 2 -->
-  <section class="stage" data-stage="2" hidden>
-    <p class="stage-num">Stage 02</p>
-    <div class="riddle">
-      <p>わたしは丸い、陶器の家。</p>
-      <p>土を抱きしめて、窓辺で日を浴びる。</p>
-      <p>緑の住人は、今は留守。</p>
-      <p class="q">— わたしの中を、覗いてみて。</p>
+  <section class="stage" data-stage="2" data-place="空っぽの鉢植え" hidden>
+    <div class="stage-badge">Stage <span>02</span></div>
+    <div class="riddle-card">
+      <div class="riddle">
+        <p>わたしは丸い、陶器の家。</p>
+        <p>土を抱きしめて、窓辺で日を浴びる。</p>
+        <p>緑の住人は、今は留守。</p>
+        <p class="q">— わたしの中を、覗いてみて。</p>
+      </div>
+      <form class="answer-form" data-answers="鉢植え|植木鉢|はちうえ|うえきばち|ハチウエ|ウエキバチ|鉢|はち">
+        <input type="text" placeholder="こたえを入力..." autocomplete="off" autocapitalize="off" spellcheck="false">
+        <button type="submit" aria-label="送信">→</button>
+      </form>
+      <p class="feedback"></p>
     </div>
-    <form class="answer-form" data-answers="鉢植え|植木鉢|はちうえ|うえきばち|ハチウエ|ウエキバチ|鉢|はち">
-      <input type="text" placeholder="answer..." autocomplete="off" autocapitalize="off" spellcheck="false">
-      <button type="submit" aria-label="送信">→</button>
-    </form>
-    <p class="feedback"></p>
   </section>
 
   <!-- Stage 3 -->
-  <section class="stage" data-stage="3" hidden>
-    <p class="stage-num">Stage 03</p>
-    <div class="riddle">
-      <p>わたしは白く、静かな箱。</p>
-      <p>冷たくはない、ただ眠る場所。</p>
-      <p>缶詰も、乾麺も、調味料も —</p>
-      <p>台所の影で、明日の出番を待っている。</p>
-      <p class="q">— わたしの名は？</p>
+  <section class="stage" data-stage="3" data-place="食材入れ" hidden>
+    <div class="stage-badge">Stage <span>03</span></div>
+    <div class="riddle-card">
+      <div class="riddle">
+        <p>わたしは白く、静かな箱。</p>
+        <p>冷たくはない、ただ眠る場所。</p>
+        <p>缶詰も、乾麺も、調味料も —</p>
+        <p>台所の影で、明日の出番を待っている。</p>
+        <p class="q">— わたしの名は？</p>
+      </div>
+      <form class="answer-form" data-answers="食材入れ|しょくざいいれ|食材いれ|食材ボックス|食材ストッカー|ストッカー|パントリー|パントリーストッカー|食料庫|しょくりょうこ|食品庫|しょくひんこ">
+        <input type="text" placeholder="こたえを入力..." autocomplete="off" autocapitalize="off" spellcheck="false">
+        <button type="submit" aria-label="送信">→</button>
+      </form>
+      <p class="feedback"></p>
     </div>
-    <form class="answer-form" data-answers="食材入れ|しょくざいいれ|食材いれ|食材ボックス|食材ストッカー|ストッカー|パントリー|パントリーストッカー|食料庫|しょくりょうこ|食品庫|しょくひんこ">
-      <input type="text" placeholder="answer..." autocomplete="off" autocapitalize="off" spellcheck="false">
-      <button type="submit" aria-label="送信">→</button>
-    </form>
-    <p class="feedback"></p>
   </section>
 
   <!-- フィナーレ -->
   <section class="final" id="final" hidden>
-    <p class="eyebrow">— Three Doors Opened —</p>
-    <h2>3つの扉が、ひらいた。</h2>
-    <p class="final-lead">それは、この3つの場所のどこかで<br>あなたを待っている。</p>
-    <ul class="places">
-      <li>
-        <span class="num">01</span>
-        <span class="place">炭酸水のパッケージの中</span>
-      </li>
-      <li>
-        <span class="num">02</span>
-        <span class="place">空っぽの鉢植えの中</span>
-      </li>
-      <li>
-        <span class="num">03</span>
-        <span class="place">食材の入った白いボックスの中</span>
-      </li>
-    </ul>
-    <p class="end-line">— さあ、探しに行こう。</p>
+    <div class="final-card">
+      <p class="eyebrow">🎉 Complete!</p>
+      <h2>ぜんぶの扉、ひらいた！</h2>
+      <p class="final-lead">3つの場所のどこかで、<br>あなたを待っているはず。</p>
+      <ul class="places">
+        <li>
+          <span class="num">01</span>
+          <span class="place">炭酸水のパッケージの中</span>
+        </li>
+        <li>
+          <span class="num">02</span>
+          <span class="place">空っぽの鉢植えの中</span>
+        </li>
+        <li>
+          <span class="num">03</span>
+          <span class="place">食材入れの中</span>
+        </li>
+      </ul>
+      <p class="end-line">Happy Hunting 🎁</p>
+    </div>
   </section>
 
 </main>
 
+<!-- 正解オーバーレイ -->
+<div class="correct-overlay" id="correct-overlay" hidden>
+  <div class="confetti-wrap" id="confetti-wrap"></div>
+  <div class="correct-card">
+    <div class="correct-stamp">
+      <span>正解!</span>
+    </div>
+    <div class="hint-block">
+      <p class="hint-lead">🔍 つぎの手がかり</p>
+      <p class="hint-place">「<span id="hint-place"></span>」<br>の付近を探してみて！</p>
+    </div>
+    <button class="next-btn" id="next-btn">次のクエストへ →</button>
+  </div>
+</div>
+
 <footer>
-  <p>The Hunt · made with care</p>
+  <p>made with 🎁</p>
 </footer>
 
 <script src="script.js"></script>
